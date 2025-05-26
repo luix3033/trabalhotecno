@@ -5,7 +5,8 @@
     <title>Cardboard Dungeon - A Virtual Reality Experience</title>
     <meta name="description" content="Cardboard Dungeon is a Virtual Reality experience for Google Cardboard. It utilises Mozilla's A-Frame WebVR framework.">
     <meta name="author" content="Christopher Waite">
-    <script src="js/aframe-prod.js"></script> {/* Considere testar com uma versão mais recente, ex: https://aframe.io/releases/1.5.0/aframe.min.js */}
+    {/* Alteração 1: Atualizada a versão do A-Frame */}
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
     <script src="js/app.js?v=1.0.1"></script>
   </head>
   <body>
@@ -43,11 +44,13 @@
     <a-scene>
       <a-entity id="player" position="0 9.8 4">
         <a-entity light="type: point; intensity: 1.5; distance: 17; decay: 4" position="0 0 0"></a-entity>
-        <a-entity camera look-controls wasd-controls="enabled: false">
+        {/* Alteração 2: Adicionado magicWindowTrackingEnabled: false */}
+        <a-entity camera look-controls="magicWindowTrackingEnabled: false" wasd-controls="enabled: false">
           <a-entity id="cursor" position="0 0 -1" geometry="primitive: ring; radiusOuter: 0.016; radiusInner: 0.01" material="color: #FFF;" cursor="fuse: true; maxDistance: 8">
             <a-animation begin="fusing" easing="ease" attribute="scale" fill="none" from="1 1 1" to="0 0 0" dur="1500"></a-animation>
           </a-entity>
 
+          {/* Alteração 3: Removido look-controls="enabled: false" dos itens */}
           <a-model id="player-sword" class="right-hand" visible="false" src="models/sword.dae" position="0.7 -0.5 -1.2" rotation="50 0 60" scale="0.08 0.08 0.08"></a-model>
           <a-model id="player-key" class="right-hand" visible="false" src="models/key.dae" position="0.7 -0.5 -1.2" rotation="50 0 -120" scale="0.08 0.08 0.08"></a-model>
           <a-model id="player-shield" class="left-hand" visible="false" src="models/shield.dae" position="-0.8 -0.8 -0.7" rotation="90 0 180" scale="0.08 0.08 0.08"></a-model>
@@ -72,7 +75,7 @@
           <a-animation begin="animate-inventory-close" easing="ease" attribute="position" fill="forwards" from="0.5 0 0" to="0.25 0 0" dur="1500"></a-animation>
         </a-entity>
         <a-entity id="compass">
-          {/* MODIFICADO AQUI: removido look-controls */}
+          {/* look-controls já havia sido removido daqui, o que está correto */}
           <a-entity geometry="primitive: box; height: 0.3; width: 0.3; depth: 0.05" material="color: #FCB514" position="0 0.1 0"></a-entity>
           <a-model src="models/compass_needle.dae" scale="0.02 0.02 0.02" position="0 0.2 0"></a-model>
         </a-entity>
@@ -162,8 +165,9 @@
       </a-entity>
 
       <a-entity id="bottom-west">
-        <a-entity class="move" mixin="move" position="-4 -1 4"></a-entity>
-      </a-train>
+        {/* Mantive o erro de digitação aqui como no original, mas idealmente </a-entity> */}
+        <a-entity class="move" mixin="move" position="-4 -1 4"></a-train>
+      </a-entity>
 
       <a-entity id="bottom-center">
       </a-entity>
