@@ -5,7 +5,7 @@
     <title>Cardboard Dungeon - A Virtual Reality Experience</title>
     <meta name="description" content="Cardboard Dungeon is a Virtual Reality experience for Google Cardboard. It utilises Mozilla's A-Frame WebVR framework.">
     <meta name="author" content="Christopher Waite">
-    <script src="js/aframe-prod.js"></script>
+    <script src="js/aframe-prod.js"></script> {/* Considere testar com uma versão mais recente, ex: https://aframe.io/releases/1.5.0/aframe.min.js */}
     <script src="js/app.js?v=1.0.1"></script>
   </head>
   <body>
@@ -41,7 +41,6 @@
       <img id="tutorial-8" src="textures/tutorial_8.png?v=1">
     </a-assets>
     <a-scene>
-      <!-- player -->
       <a-entity id="player" position="0 9.8 4">
         <a-entity light="type: point; intensity: 1.5; distance: 17; decay: 4" position="0 0 0"></a-entity>
         <a-entity camera look-controls wasd-controls="enabled: false">
@@ -49,14 +48,12 @@
             <a-animation begin="fusing" easing="ease" attribute="scale" fill="none" from="1 1 1" to="0 0 0" dur="1500"></a-animation>
           </a-entity>
 
-          <!-- items -->
-          <a-model id="player-sword" class="right-hand" visible="false" look-controls="enabled: false" src="models/sword.dae" position="0.7 -0.5 -1.2" rotation="50 0 60" scale="0.08 0.08 0.08"></a-model>
-          <a-model id="player-key" class="right-hand" visible="false" look-controls="enabled: false" src="models/key.dae" position="0.7 -0.5 -1.2" rotation="50 0 -120" scale="0.08 0.08 0.08"></a-model>
-          <a-model id="player-shield" class="left-hand" visible="false" look-controls="enabled: false" src="models/shield.dae" position="-0.8 -0.8 -0.7" rotation="90 0 180" scale="0.08 0.08 0.08"></a-model>
+          <a-model id="player-sword" class="right-hand" visible="false" src="models/sword.dae" position="0.7 -0.5 -1.2" rotation="50 0 60" scale="0.08 0.08 0.08"></a-model>
+          <a-model id="player-key" class="right-hand" visible="false" src="models/key.dae" position="0.7 -0.5 -1.2" rotation="50 0 -120" scale="0.08 0.08 0.08"></a-model>
+          <a-model id="player-shield" class="left-hand" visible="false" src="models/shield.dae" position="-0.8 -0.8 -0.7" rotation="90 0 180" scale="0.08 0.08 0.08"></a-model>
         </a-entity>
       </a-entity>
 
-      <!-- inventory -->
       <a-entity id="inventory" position="0 8.1 4">
         <a-entity id="inv-slot-1" class="inv-slot" geometry="primitive: plane; height: 0.5; width: 0.5" rotation="-90 0 0" position="0 0.01 -0.25" material="color: #FFFFFF; transparent: true; opacity: 0.6">
           <a-animation begin="animate-inventory" easing="ease" attribute="position" fill="forwards" from="0 0.01 -0.25" to="0 0.01 -0.5" dur="1500"></a-animation>
@@ -75,12 +72,12 @@
           <a-animation begin="animate-inventory-close" easing="ease" attribute="position" fill="forwards" from="0.5 0 0" to="0.25 0 0" dur="1500"></a-animation>
         </a-entity>
         <a-entity id="compass">
-          <a-entity look-controls geometry="primitive: box; height: 0.3; width: 0.3; depth: 0.05" material="color: #FCB514" position="0 0.1 0"></a-entity>
+          {/* MODIFICADO AQUI: removido look-controls */}
+          <a-entity geometry="primitive: box; height: 0.3; width: 0.3; depth: 0.05" material="color: #FCB514" position="0 0.1 0"></a-entity>
           <a-model src="models/compass_needle.dae" scale="0.02 0.02 0.02" position="0 0.2 0"></a-model>
         </a-entity>
       </a-entity>
 
-      <!-- starting/tutorial area -->
       <a-entity id="tutorial">
         <a-entity light="type: point; intensity: 1.5; distance: 17; decay: 4" position="0 0 0"></a-entity>
         <a-entity class="bottom" mixin="wall bottom-outside" visible="true" position="-4 8 4"></a-entity>
@@ -99,14 +96,12 @@
         <a-entity class="back" mixin="wall back-outside" visible="true" position="4 14 2"></a-entity>
 
        
-        <!-- items -->
         <a-entity id="key" class="pickup" position="0 8 6">
           <a-model src="models/key.dae" position="0 0 0" mixin="key-model"></a-model>
           <a-entity mixin="key-trigger" material="transparent: true; opacity: 0"></a-entity>
         </a-entity>
       </a-entity>
 
-      <!-- chão -->
       <a-entity id="north-west">
       </a-entity>
 
@@ -150,7 +145,6 @@
       <a-entity id="south-east">
       </a-entity>
 
-      <!-- bottom floor -->
       <a-entity id="bottom-north-west">
       </a-entity>
 
@@ -169,7 +163,7 @@
 
       <a-entity id="bottom-west">
         <a-entity class="move" mixin="move" position="-4 -1 4"></a-entity>
-      </a-entity>
+      </a-train>
 
       <a-entity id="bottom-center">
       </a-entity>
@@ -194,7 +188,6 @@
       <a-entity id="bottom-south-east">
       </a-entity>
 
-      <!-- top floor -->
       <a-entity id="top-north-west">
       </a-entity>
 
